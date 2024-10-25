@@ -1,0 +1,17 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+.search {
+  @include flexbox;
+  @include input;
+  gap: 0.3rem;
+  width: 60%;
+  &__input {
+    border: none;
+    background-color: $alabaster;
+    font-family: $font-family;
+  }
+  &__icon {
+    color: $black;
+    font-size: 1rem;
+  }
+}

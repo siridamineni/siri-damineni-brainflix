@@ -1,0 +1,9 @@
+@use "../../styles/partials/variables" as *;
+.Header__avatar {
+  display: block;
+  border-radius: 50%;
+  background-color: $mercury;
+  object-fit: cover;
+  width: 2.25rem;
+  height: 2.25rem;
+}

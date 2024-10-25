@@ -1,0 +1,15 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.upload__button {
+  background-color: $blue;
+  border: none;
+  @include flexbox;
+  justify-content: space-evenly;
+  padding: 10px;
+  gap: 1rem;
+  margin: 0.3rem 0;
+  border-radius: 4px;
+  color: $white;
+  width: 100%;
+}

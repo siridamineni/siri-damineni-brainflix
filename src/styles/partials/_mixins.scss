@@ -1,0 +1,35 @@
+@use "./variables" as *;
+@mixin desktop {
+  @media screen and (min-width: $desktop-breakpoint) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media screen and (min-width: $tablet-breakpoint) {
+    @content;
+  }
+}
+
+@mixin desktop-tablet {
+  @include desktop {
+    @content;
+  }
+  @include tablet {
+    @content;
+  }
+}
+
+@mixin flexbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin input {
+  background-color: $alabaster;
+  font-family: $font-family;
+  color: $dark-black;
+  padding: 0.5rem;
+  border: 1px solid $mercury;
+  border-radius: 4px;
+}
