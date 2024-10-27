@@ -1,12 +1,7 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
-.comments__label {
-  margin: 1rem;
-  font-weight: 700;
-}
 .new-comment-form {
-  margin: 1rem;
-  width: 90%;
+  width: 100%;
   @include flexbox($flex-direction: row, $align-items: flex-start);
   &__formfields {
     @include flexbox($flex-direction: column);

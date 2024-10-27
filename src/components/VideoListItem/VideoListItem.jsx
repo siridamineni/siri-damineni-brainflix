@@ -1,16 +1,17 @@
 import React from "react";
 import "./VideoListItem.scss";
-function VideoListItem() {
+function VideoListItem({ id, src, videoName, videoBy, handleVideoChange }) {
   return (
     <div className="video-list-item">
       <img
         className="video-list-item__thumnail-card"
-        src="https://unit-3-project-api-0a5620414506.herokuapp.com/images/image1.jpg"
-        alt=""
+        src={src}
+        alt={videoName}
+        onClick={() => handleVideoChange(id)}
       />
       <div className="video-list-item__details">
-        <p className="video-list-item__name">Exploring cities of Europe</p>
-        <p>Ryan Hernandez</p>
+        <p className="video-list-item__name">{videoName}</p>
+        <p className="video-list-item__maker-name">{videoBy}</p>
       </div>
     </div>
   );

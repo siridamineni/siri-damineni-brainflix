@@ -5,4 +5,10 @@
   object-fit: cover;
   width: 2.25rem;
   height: 2.25rem;
+  &--no-img {
+    border-radius: 50%;
+    background-color: $mercury;
+    width: 2.25rem;
+    height: 2.25rem;
+  }
 }

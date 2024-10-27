@@ -1,7 +1,7 @@
 import React from "react";
 
-function Title() {
-  return <h1>The Future of Artifical Intelligence</h1>;
+function Title({ heading }) {
+  return <h1>{heading}</h1>;
 }
 
 export default Title;

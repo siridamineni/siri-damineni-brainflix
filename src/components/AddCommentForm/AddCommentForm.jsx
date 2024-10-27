@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import IconButton from "../IconButton/IconButton";
 import AddCommentIcon from "../../assets/icons/AddCommentIcon";
 import UserAvatar from "../UserAvatar/UserAvatar";
+import userImage from "../../assets/images/Mohan-muruge.jpg";
 import "./AddCommentForm.scss";
 function AddCommentForm() {
   const [addComment, setAddComment] = useState("");
@@ -15,27 +16,24 @@ function AddCommentForm() {
     //add post api to submit the form
   };
   return (
-    <>
-      <p className="comments__label">3 Comments</p>
-      <form className="new-comment-form" onSubmit={handleSubmit}>
-        <UserAvatar />
-        <div className="new-comment-form__formfields">
-          <div className="new-comment-form__container">
-            <label className="new-comment-form__label" htmlFor="newComment">
-              JOIN THE CONVERSATION
-            </label>
-            <textarea
-              className="new-comment-form__input"
-              id="newComment"
-              name="addComment"
-              placeholder="Add a new comment"
-              value={addComment}
-              onChange={handleChange}></textarea>
-          </div>
-          <IconButton icon={<AddCommentIcon />} text="COMMENT" type="submit" />
+    <form className="new-comment-form" onSubmit={handleSubmit}>
+      <UserAvatar userImg={userImage} />
+      <div className="new-comment-form__formfields">
+        <div className="new-comment-form__container">
+          <label className="new-comment-form__label" htmlFor="newComment">
+            JOIN THE CONVERSATION
+          </label>
+          <textarea
+            className="new-comment-form__input"
+            id="newComment"
+            name="addComment"
+            placeholder="Add a new comment"
+            value={addComment}
+            onChange={handleChange}></textarea>
         </div>
-      </form>
-    </>
+        <IconButton icon={<AddCommentIcon />} text="COMMENT" type="submit" />
+      </div>
+    </form>
   );
 }
 

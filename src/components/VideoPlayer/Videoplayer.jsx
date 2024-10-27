@@ -6,10 +6,7 @@ function VideoPlayer({ src, poster }) {
       <video
         className="video-player__video-input"
         src={src}
-        poster={
-          poster ||
-          "https://unit-3-project-api-0a5620414506.herokuapp.com/images/image0.jpg"
-        }
+        poster={poster}
         width="100%"
         controls
       />

@@ -1,10 +1,13 @@
 import React from "react";
 import "./UserAvatar.scss";
-import userImage from "../../assets/images/Mohan-muruge.jpg";
-export default function UserAvatar() {
+export default function UserAvatar({ userImg }) {
   return (
     <div>
-      <img className="user-avatar" src={userImage} alt="User Photo" />
+      {userImg ? (
+        <img className="user-avatar" src={userImg} alt="User Photo" />
+      ) : (
+        <div className="user-avatar--no-img" />
+      )}
     </div>
   );
 }
