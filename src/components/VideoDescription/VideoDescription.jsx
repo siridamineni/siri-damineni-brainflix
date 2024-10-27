@@ -1,8 +1,7 @@
-import React from "react";
-
+import "./VideoDescription.scss";
 function VideoDescription({ description }) {
   return (
-    <div>
+    <div className="video-description">
       <p>{description}</p>
     </div>
   );

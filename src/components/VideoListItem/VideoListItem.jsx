@@ -10,8 +10,12 @@ function VideoListItem({ id, src, videoName, videoBy, handleVideoChange }) {
         onClick={() => handleVideoChange(id)}
       />
       <div className="video-list-item__details">
-        <p className="video-list-item__name">{videoName}</p>
-        <p className="video-list-item__maker-name">{videoBy}</p>
+        <div>
+          <p className="video-list-item__name">{videoName}</p>
+        </div>
+        <div>
+          <p className="video-list-item__maker-name">{videoBy}</p>
+        </div>
       </div>
     </div>
   );

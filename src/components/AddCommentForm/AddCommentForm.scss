@@ -1,33 +1,37 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 .new-comment-form {
-  width: 100%;
-  @include flexbox($flex-direction: row, $align-items: flex-start);
+  margin: 0 1rem;
+  @include flexbox(
+    $flex-direction: row,
+    $align-items: flex-start,
+    $justify-content: flex-start
+  );
+  &__img-container {
+    padding-top: 1.6rem;
+  }
   &__formfields {
-    @include flexbox($flex-direction: column);
+    @include flexbox($flex-direction: column, $align-items: flex-start);
+    width: 80%;
   }
   &__container {
-    @include flexbox($flex-direction: column, $gap: 0.5rem);
+    @include flexbox(
+      $flex-direction: column,
+      $gap: 0.5rem,
+      $align-items: flex-start
+    );
   }
   &__label {
-    color: $silver;
-    font-family: $font-family;
-    font-weight: 600;
-    font-size: 1rem;
+    @include text-style($color: $silver, $font-weight: 600);
   }
   &__input {
+    @include input;
+    height: 6.25rem;
     width: 100%;
-    border-radius: 4px;
-    color: $dark-black;
-    font-family: $font-family;
-    background-color: $alabaster;
-    padding: 0.75rem;
-    border: 1px solid $mercury;
-    height: auto;
     resize: none;
   }
   &__input::placeholder {
-    color: $dark-black;
+    @include text-style();
   }
   &__input:focus {
     border: 1px solid $blue;

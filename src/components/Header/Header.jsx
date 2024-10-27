@@ -14,7 +14,10 @@ const Header = () => {
         <Search />
         <UserAvatar userImg={userImage} />
       </div>
-      <IconButton icon={<UploadIcon />} text={"upload"} />
+      <IconButton
+        icon={<UploadIcon height={20} width={20} />}
+        text={"upload"}
+      />
     </div>
   );
 };

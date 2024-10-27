@@ -1,12 +1,14 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 .search {
-  @include flexbox($gap: 0.3rem);
+  width: calc(100% - 60px);
   @include input;
+  @include flexbox($gap: 0.3rem, $justify-content: flex-start);
   &__input {
     border: none;
     background-color: $alabaster;
-    font-family: $font-family;
+    @include text-style();
+    outline: none;
   }
   &__icon {
     color: $black;

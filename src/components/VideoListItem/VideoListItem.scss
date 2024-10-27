@@ -1,7 +1,7 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 .video-list-item {
-  @include flexbox($justify-content: space-between, $align-items: flex-start);
+  @include flexbox($align-items: stretch);
   &__thumnail-card {
     background-color: $mercury;
     border-radius: 4px;
@@ -12,16 +12,15 @@
     @include flexbox(
       $flex-direction: column,
       $align-items: flex-start,
-      $justify-content: flex-start,
-      $gap: 0rem
+      $justify-content: space-between
     );
     width: 50%;
   }
   &__name {
-    font-weight: 600;
+    @include text-style($font-weight: 600);
     margin-top: -1.5px;
   }
   &__maker-name {
-    line-height: 1.3;
+    @include text-style();
   }
 }

@@ -17,7 +17,9 @@ function AddCommentForm() {
   };
   return (
     <form className="new-comment-form" onSubmit={handleSubmit}>
-      <UserAvatar userImg={userImage} />
+      <div className="new-comment-form__img-container">
+        <UserAvatar userImg={userImage} />
+      </div>
       <div className="new-comment-form__formfields">
         <div className="new-comment-form__container">
           <label className="new-comment-form__label" htmlFor="newComment">
@@ -29,9 +31,15 @@ function AddCommentForm() {
             name="addComment"
             placeholder="Add a new comment"
             value={addComment}
-            onChange={handleChange}></textarea>
+            onChange={handleChange}
+            cols={40}
+          />
         </div>
-        <IconButton icon={<AddCommentIcon />} text="COMMENT" type="submit" />
+        <IconButton
+          icon={<AddCommentIcon height={20} width={20} />}
+          text="COMMENT"
+          type="submit"
+        />
       </div>
     </form>
   );

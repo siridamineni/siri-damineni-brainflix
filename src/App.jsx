@@ -24,7 +24,7 @@ function App() {
         <Title heading={mainVideo?.title} />
         <VideoDetails
           name={`By ${mainVideo?.channel}`}
-          date={format(new Date(mainVideo?.timestamp), "MM/dd/yyyy")}
+          date={format(new Date(mainVideo?.timestamp), "M/d/yyyy")}
           views={mainVideo?.views}
           likes={mainVideo?.likes}
         />

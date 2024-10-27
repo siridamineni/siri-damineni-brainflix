@@ -17,7 +17,7 @@ function CommentsListItem({ name, time, description }) {
           </div>
         </div>
         <div>
-          <p>{description}</p>
+          <p className="comments__desc">{description}</p>
         </div>
       </div>
     </div>

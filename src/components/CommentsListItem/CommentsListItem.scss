@@ -2,9 +2,7 @@
 @use "../../styles/partials/variables" as *;
 .comments {
   @include flexbox($flex-direction: row, $align-items: flex-start);
-  &__Avatar {
-    padding-top: 10px;
-  }
+  padding: 1rem 0rem;
   &__container {
     @include flexbox(
       $flex-direction: column,
@@ -18,9 +16,13 @@
     @include flexbox($justify-content: space-between);
   }
   &__name {
-    font-weight: 600;
+    @include text-style($font-weight: 600);
   }
   &__date {
-    color: $silver;
+    @include text-style($color: $silver);
+  }
+  &__desc {
+    margin-top: 10px;
+    @include text-style();
   }
 }

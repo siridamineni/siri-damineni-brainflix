@@ -1,0 +1,7 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.video-description {
+  padding-top: 1rem;
+  @include text-style();
+}

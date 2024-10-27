@@ -3,7 +3,7 @@
 
 .header {
   @include flexbox($flex-direction: column);
-  padding: 16px;
+  padding: 0.5rem 1rem 1rem 1rem;
   &__search-container {
     @include flexbox($justify-content: space-between);
     width: 100%;

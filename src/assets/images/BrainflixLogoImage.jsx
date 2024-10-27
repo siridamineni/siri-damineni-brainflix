@@ -7,7 +7,7 @@ const BrainFlixLogoImage = ({
     <svg
       width={width}
       height={height}
-      viewBox="0 0 113 23"
+      viewBox="0 0 108 25"
       fill="none"
       xmlns="http://www.w3.org/2000/svg">
       <path

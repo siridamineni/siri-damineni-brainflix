@@ -1,0 +1,9 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+.title {
+  @include text-style(
+    $font-size: 1.5rem,
+    $line-height: 2rem,
+    $font-weight: 700
+  );
+}

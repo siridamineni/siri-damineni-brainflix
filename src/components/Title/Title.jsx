@@ -1,7 +1,7 @@
-import React from "react";
+import "./Title.scss";
 
 function Title({ heading }) {
-  return <h1>{heading}</h1>;
+  return <h1 className="title">{heading}</h1>;
 }
 
 export default Title;

@@ -7,10 +7,14 @@
   margin: 0px 1rem;
 }
 .comments-list {
-  margin: 1rem;
+  margin: 1rem 1rem 0rem 1rem;
   &__label {
     margin: 1rem;
-    font-weight: 700;
+    @include text-style(
+      $font-size: 0.875rem,
+      $line-height: 1.375rem,
+      $font-weight: 600
+    );
   }
   &__item {
     border-top: 1px solid $mercury;
@@ -20,10 +24,17 @@
   }
 }
 .video-list {
-  @include flexbox($flex-direction: column, $align-items: flex-start);
-  margin: 0 1rem;
+  @include flexbox(
+    $flex-direction: column,
+    $align-items: flex-start,
+    $justify-content: flex-start
+  );
+  margin: 0 1rem 2rem 1rem;
   &__heading {
-    color: $silver;
-    text-align: left;
+    @include text-style(
+      $color: $silver,
+      $font-weight: 600,
+      $text-transform: uppercase
+    );
   }
 }
