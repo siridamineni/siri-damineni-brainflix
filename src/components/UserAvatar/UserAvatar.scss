@@ -1,6 +1,5 @@
 @use "../../styles/partials/variables" as *;
-.Header__avatar {
-  display: block;
+.user-avatar {
   border-radius: 50%;
   background-color: $mercury;
   object-fit: cover;

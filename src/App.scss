@@ -1,4 +1,16 @@
+@use "./styles/partials/variables" as *;
 * {
-  width: auto;
-  overflow: hidden;
+  overflow-x: hidden;
+}
+.video-information {
+  margin: 0px 1rem;
+}
+.comments-list {
+  margin: 1rem;
+  &__item {
+    border-top: 1px solid $mercury;
+    &:last-child {
+      border-bottom: 1px solid $mercury;
+    }
+  }
 }

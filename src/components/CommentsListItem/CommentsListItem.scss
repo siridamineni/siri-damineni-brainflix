@@ -1,0 +1,26 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+.comments {
+  @include flexbox($flex-direction: row, $align-items: flex-start);
+  &__Avatar {
+    padding-top: 10px;
+  }
+  &__container {
+    @include flexbox(
+      $flex-direction: column,
+      $align-items: flex-start,
+      $gap: 0rem
+    );
+    width: 80%;
+  }
+  &__name-date-content {
+    width: 100%;
+    @include flexbox($justify-content: space-between);
+  }
+  &__name {
+    font-weight: 600;
+  }
+  &__date {
+    color: $silver;
+  }
+}

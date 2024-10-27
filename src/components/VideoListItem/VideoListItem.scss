@@ -1,0 +1,24 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+.video-list-item {
+  margin: 0 1rem;
+  @include flexbox($justify-content: space-between, $align-items: flex-start);
+  &__thumnail-card {
+    background-color: $mercury;
+    border-radius: 4px;
+    object-fit: cover;
+    width: 50%;
+  }
+  &__details {
+    @include flexbox(
+      $flex-direction: column,
+      $align-items: flex-start,
+      $justify-content: flex-start
+    );
+  }
+  &__name {
+    font-weight: 600;
+    line-height: 1;
+    margin-top: -1.5px;
+  }
+}

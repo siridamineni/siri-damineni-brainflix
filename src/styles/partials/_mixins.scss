@@ -19,10 +19,17 @@
   }
 }
 
-@mixin flexbox {
+@mixin flexbox(
+  $flex-direction: row,
+  $justify-content: center,
+  $align-items: center,
+  $gap: 1rem
+) {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: $flex-direction;
+  justify-content: $justify-content;
+  align-items: $align-items;
+  gap: $gap;
 }
 
 @mixin input {
@@ -32,4 +39,9 @@
   padding: 0.5rem;
   border: 1px solid $mercury;
   border-radius: 4px;
+}
+
+@mixin video-controller-icons {
+  background-color: $black;
+  border-radius: 5px;
 }

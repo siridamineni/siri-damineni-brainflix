@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./Search.scss";
+import SearchIcon from "../../assets/icons/SearchIcon";
 const Search = () => {
   const [searchValue, SetSearchValue] = useState("");
 
@@ -8,6 +9,7 @@ const Search = () => {
   };
   return (
     <div className="search">
+      <SearchIcon />
       <input
         className="search__input"
         type="text"

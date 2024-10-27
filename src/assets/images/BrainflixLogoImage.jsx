@@ -1,6 +1,6 @@
 const BrainFlixLogoImage = ({
-  width = "113",
-  height = "23",
+  width = "120",
+  height = "25",
   fill = "#0095FF",
 }) => {
   return (
