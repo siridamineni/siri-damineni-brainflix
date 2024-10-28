@@ -47,4 +47,12 @@
       @include text-style($font-size: 0.875rem, $line-height: 1.125rem);
     }
   }
+  @include desktop {
+    &__thumnail-card {
+      width: 100%;
+    }
+    &__details {
+      width: 100%;
+    }
+  }
 }

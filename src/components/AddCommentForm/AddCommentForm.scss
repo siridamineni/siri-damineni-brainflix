@@ -52,9 +52,9 @@
       @include flexbox(
         $flex-direction: column,
         $gap: 0.5rem,
-        $align-items: flex-start,
-        $flex: 1 1 auto
+        $align-items: flex-start
       );
+      flex: 1 1 auto;
     }
     &__input {
       height: 2.5rem;
@@ -62,5 +62,9 @@
     &__btn-container {
       margin-top: 30px;
     }
+  }
+  @include desktop {
+    margin: 1rem 0rem 1rem 2rem;
+    padding-right: 1rem;
   }
 }

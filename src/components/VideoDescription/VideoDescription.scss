@@ -7,4 +7,7 @@
   @include tablet {
     @include text-style($font-size: 0.875rem, $line-height: 1.25rem);
   }
+  @include desktop {
+    padding-right: 2rem;
+  }
 }

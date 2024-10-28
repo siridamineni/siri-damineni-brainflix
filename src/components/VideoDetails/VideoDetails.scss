@@ -73,4 +73,7 @@
       );
     }
   }
+  @include desktop {
+    padding-right: 2rem;
+  }
 }

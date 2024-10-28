@@ -20,50 +20,56 @@ function App() {
     <>
       <Header />
       <Videoplayer src={mainVideo?.video} poster={mainVideo?.image} />
-      <div className="video-information">
-        <Title heading={mainVideo?.title} />
-        <VideoDetails
-          name={`By ${mainVideo?.channel}`}
-          date={format(new Date(mainVideo?.timestamp), "M/d/yyyy")}
-          views={mainVideo?.views}
-          likes={mainVideo?.likes}
-        />
-        <VideoDescription description={mainVideo?.description} />
-      </div>
-      <h3 className="comments-list__label">
-        {mainVideo?.comments?.length} Comments
-      </h3>
-      <AddCommentForm />
-      <div className="comments-list">
-        {mainVideo?.comments?.map((item) => {
-          return (
-            <div className="comments-list__item" key={item?.id}>
-              <CommentsListItem
-                name={item?.name}
-                time={format(new Date(item?.timestamp), "MM/dd/yyyy")}
-                description={item?.comment}
-              />
-            </div>
-          );
-        })}
-      </div>
-      <div className="video-list">
-        <h3 className="video-list__heading">NEXT VIDEOS</h3>
-        {VideosData?.filter((item) => item.id != mainVideo?.id)?.map(
-          (eachVideo) => {
-            return (
-              <div key={eachVideo.id}>
-                <VideoListItem
-                  id={eachVideo?.id}
-                  src={eachVideo?.image}
-                  videoName={eachVideo?.title}
-                  videoBy={eachVideo?.channel}
-                  handleVideoChange={onVideoChange}
-                />
-              </div>
-            );
-          }
-        )}
+      <div className="desktop-responsive__container">
+        <div className="desktop-responsive__current-video-details">
+          <div className="video-information">
+            <Title heading={mainVideo?.title} />
+            <VideoDetails
+              name={`By ${mainVideo?.channel}`}
+              date={format(new Date(mainVideo?.timestamp), "M/d/yyyy")}
+              views={mainVideo?.views}
+              likes={mainVideo?.likes}
+            />
+            <VideoDescription description={mainVideo?.description} />
+          </div>
+          <h3 className="comments-list__label">
+            {mainVideo?.comments?.length} Comments
+          </h3>
+          <AddCommentForm />
+          <div className="comments-list">
+            {mainVideo?.comments?.map((item) => {
+              return (
+                <div className="comments-list__item" key={item?.id}>
+                  <CommentsListItem
+                    name={item?.name}
+                    time={format(new Date(item?.timestamp), "MM/dd/yyyy")}
+                    description={item?.comment}
+                  />
+                </div>
+              );
+            })}
+          </div>
+        </div>
+        <div className="desktop-responsive__next-videos">
+          <div className="video-list">
+            <h3 className="video-list__heading">NEXT VIDEOS</h3>
+            {VideosData?.filter((item) => item.id != mainVideo?.id)?.map(
+              (eachVideo) => {
+                return (
+                  <div key={eachVideo.id}>
+                    <VideoListItem
+                      id={eachVideo?.id}
+                      src={eachVideo?.image}
+                      videoName={eachVideo?.title}
+                      videoBy={eachVideo?.channel}
+                      handleVideoChange={onVideoChange}
+                    />
+                  </div>
+                );
+              }
+            )}
+          </div>
+        </div>
       </div>
     </>
   );
