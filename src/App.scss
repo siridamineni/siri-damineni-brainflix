@@ -4,7 +4,10 @@
   overflow-x: hidden;
 }
 .video-information {
-  margin: 0px 1rem;
+  padding: 24px 1rem;
+  @include tablet {
+    padding: 24px 2rem 2rem 2rem;
+  }
 }
 .comments-list {
   margin: 1rem 1rem 0rem 1rem;
@@ -22,6 +25,12 @@
       border-bottom: 1px solid $mercury;
     }
   }
+  @include tablet {
+    &__label {
+      margin: 1rem 2rem;
+    }
+  }
+  margin: 0rem 2rem;
 }
 .video-list {
   @include flexbox(
@@ -36,5 +45,8 @@
       $font-weight: 600,
       $text-transform: uppercase
     );
+  }
+  @include tablet {
+    margin: 1rem 2rem 2rem 2rem;
   }
 }

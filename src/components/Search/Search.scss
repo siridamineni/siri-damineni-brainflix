@@ -14,4 +14,7 @@
     color: $black;
     font-size: 1rem;
   }
+  @include tablet {
+    width: 50%;
+  }
 }

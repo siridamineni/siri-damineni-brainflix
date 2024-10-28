@@ -37,4 +37,30 @@
     border: 1px solid $blue;
     outline: none;
   }
+  @include tablet {
+    margin: 1rem 2rem;
+    @include flexbox(
+      $flex-direction: row,
+      $justify-content: flex-start,
+      $align-items: flex-start
+    );
+    &__formfields {
+      @include flexbox($flex-direction: row, $justify-content: space-evenly);
+      width: 90%;
+    }
+    &__container {
+      @include flexbox(
+        $flex-direction: column,
+        $gap: 0.5rem,
+        $align-items: flex-start,
+        $flex: 1 1 auto
+      );
+    }
+    &__input {
+      height: 2.5rem;
+    }
+    &__btn-container {
+      margin-top: 30px;
+    }
+  }
 }

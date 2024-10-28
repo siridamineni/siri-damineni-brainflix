@@ -25,4 +25,32 @@
     margin-top: 10px;
     @include text-style();
   }
+  @include tablet {
+    @include flexbox(
+      $flex-direction: row,
+      $align-items: flex-start,
+      $justify-content: flex-start
+    );
+    &__container {
+      width: calc(100% - 50px);
+    }
+    &__name {
+      @include text-style(
+        $font-weight: 600,
+        $font-size: 0.875rem,
+        $line-height: 1.125rem
+      );
+    }
+    &__date {
+      @include text-style(
+        $color: $silver,
+        $font-size: 0.875rem,
+        $line-height: 1.125rem
+      );
+    }
+    &__desc {
+      margin-top: 10px;
+      @include text-style($font-size: 0.875rem, $line-height: 1.125rem);
+    }
+  }
 }

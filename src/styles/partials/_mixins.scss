@@ -41,13 +41,15 @@
   $flex-direction: row,
   $justify-content: center,
   $align-items: center,
-  $gap: 1rem
+  $gap: 1rem,
+  $flex: 0 1 auto
 ) {
   display: flex;
   flex-direction: $flex-direction;
   justify-content: $justify-content;
   align-items: $align-items;
   gap: $gap;
+  flex: $flex;
 }
 
 @mixin input {

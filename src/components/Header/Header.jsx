@@ -1,4 +1,4 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import BrainflixLogo from "../brainflixLogo/brainflixLogo";
 import Search from "../Search/Search";
 import userImage from "../../assets/images/Mohan-muruge.jpg";
@@ -7,18 +7,42 @@ import IconButton from "../IconButton/IconButton";
 import UploadIcon from "../../assets/icons/UploadIcon";
 import "./Header.scss";
 const Header = () => {
+  const [isLargerScreen, setIsLargerScreen] = useState(window.innerWidth > 767);
+  useEffect(() => {
+    const handleResize = () => {
+      setIsLargerScreen(window.innerWidth > 767);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   return (
-    <div className="header">
-      <BrainflixLogo />
-      <div className="header__search-container">
-        <Search />
-        <UserAvatar userImg={userImage} />
-      </div>
-      <IconButton
-        icon={<UploadIcon height={20} width={20} />}
-        text={"upload"}
-      />
-    </div>
+    <>
+      {isLargerScreen ? (
+        <div className="header">
+          <BrainflixLogo />
+          <div className="header__container">
+            <Search />
+            <IconButton
+              icon={<UploadIcon height={20} width={20} />}
+              text={"upload"}
+            />
+            <UserAvatar userImg={userImage} />
+          </div>
+        </div>
+      ) : (
+        <div className="header">
+          <BrainflixLogo />
+          <div className="header__search-container">
+            <Search />
+            <UserAvatar userImg={userImage} />
+          </div>
+          <IconButton
+            icon={<UploadIcon height={20} width={20} />}
+            text={"upload"}
+          />
+        </div>
+      )}
+    </>
   );
 };
 

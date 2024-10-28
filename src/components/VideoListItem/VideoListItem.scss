@@ -23,4 +23,28 @@
   &__maker-name {
     @include text-style();
   }
+  @include tablet {
+    @include flexbox(
+      $justify-content: flex-start,
+      $align-items: stretch,
+      $gap: 1.5rem
+    );
+    &__thumnail-card {
+      width: 25%;
+      @include flexbox($align-items: flex-start);
+    }
+    &__details {
+      width: 25%;
+    }
+    &__name {
+      @include text-style(
+        $font-size: 0.875rem,
+        $line-height: 1.125rem,
+        $font-weight: 600
+      );
+    }
+    &__maker-name {
+      @include text-style($font-size: 0.875rem, $line-height: 1.125rem);
+    }
+  }
 }

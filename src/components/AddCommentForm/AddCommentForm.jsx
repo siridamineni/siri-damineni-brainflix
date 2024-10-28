@@ -32,14 +32,11 @@ function AddCommentForm() {
             placeholder="Add a new comment"
             value={addComment}
             onChange={handleChange}
-            cols={40}
           />
         </div>
-        <IconButton
-          icon={<AddCommentIcon height={20} width={20} />}
-          text="COMMENT"
-          type="submit"
-        />
+        <div className="new-comment-form__btn-container">
+          <IconButton icon={<AddCommentIcon />} text="COMMENT" type="submit" />
+        </div>
       </div>
     </form>
   );

@@ -8,4 +8,23 @@
     @include flexbox($justify-content: space-between);
     width: 100%;
   }
+  @include tablet {
+    padding: 1.5rem 2rem;
+    @include flexbox($flex-direction: row, $justify-content: space-between);
+    &__container {
+      @include flexbox($flex-direction: row, $justify-content: space-between);
+      width: 70%;
+    }
+  }
+  @include desktop {
+    padding: 1rem 4rem;
+    &__container {
+      @include flexbox(
+        $flex-direction: row,
+        $justify-content: space-between,
+        $gap: 16px
+      );
+      width: 40%;
+    }
+  }
 }

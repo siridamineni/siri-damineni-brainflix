@@ -36,4 +36,41 @@
   &__likes {
     @include flexbox($gap: 0.5rem);
   }
+  @include tablet {
+    border-top: none;
+    margin-top: -10px;
+    @include flexbox(
+      $flex-direction: row,
+      $justify-content: space-between,
+      $align-items: center
+    );
+    &__name-date {
+      @include flexbox(
+        $flex-direction: row,
+        $align-items: flex-start,
+        $gap: 1rem
+      );
+    }
+    &__views-likes {
+      @include flexbox(
+        $flex-direction: row,
+        $align-items: flex-start,
+        $gap: 1rem
+      );
+    }
+    &__name {
+      @include text-style(
+        $font-size: 1rem,
+        $line-height: 1.25rem,
+        $font-weight: 600
+      );
+    }
+    &__date > span {
+      @include text-style(
+        $font-size: 1rem,
+        $line-height: 1.25rem,
+        $color: $silver
+      );
+    }
+  }
 }
