@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import IconButton from "../IconButton/IconButton";
 import AddCommentIcon from "../../assets/icons/AddCommentIcon";
 import UserAvatar from "../UserAvatar/UserAvatar";
+import FormField from "../FormField/FormField";
 import userImage from "../../assets/images/Mohan-muruge.jpg";
 import "./AddCommentForm.scss";
 function AddCommentForm() {
@@ -14,6 +15,9 @@ function AddCommentForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     //add post api to submit the form
+
+    //reset the form
+    setAddComment("");
   };
   return (
     <form className="new-comment-form" onSubmit={handleSubmit}>
@@ -21,19 +25,15 @@ function AddCommentForm() {
         <UserAvatar userImg={userImage} />
       </div>
       <div className="new-comment-form__formfields">
-        <div className="new-comment-form__container">
-          <label className="new-comment-form__label" htmlFor="newComment">
-            JOIN THE CONVERSATION
-          </label>
-          <textarea
-            className="new-comment-form__input"
-            id="newComment"
-            name="addComment"
-            placeholder="Add a new comment"
-            value={addComment}
-            onChange={handleChange}
-          />
-        </div>
+        <FormField
+          isTextArea
+          label={"join the conversation"}
+          id={"comment"}
+          name="comment"
+          placeholder="Add a New Comment"
+          inputValue={addComment}
+          handleChange={handleChange}
+        />
         <div className="new-comment-form__btn-container">
           <IconButton icon={<AddCommentIcon />} text="COMMENT" type="submit" />
         </div>

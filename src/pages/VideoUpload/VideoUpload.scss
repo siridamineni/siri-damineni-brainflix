@@ -1,0 +1,85 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+.video-upload {
+  margin: 0rem 1rem;
+  &__form {
+    @include flexbox($flex-direction: column, $gap: 1.5rem);
+  }
+  &__formfields-container {
+    @include flexbox($flex-direction: column, $gap: 2rem);
+  }
+  &__thumbnail-title {
+    @include text-style(
+      $color: $silver,
+      $font-weight: 600,
+      $text-transform: uppercase,
+      $line-height: 1.25rem
+    );
+    padding-bottom: 0.3rem;
+  }
+  &__thumbnail {
+    background-color: $mercury;
+    border-radius: 4px;
+    object-fit: cover;
+    width: 100%;
+  }
+  &__btn-container {
+    @include flexbox($flex-direction: column);
+    width: 100%;
+  }
+  &__cancel-button {
+    color: $blue;
+    background-color: $white;
+    border: none;
+  }
+  @include tablet {
+    margin: 1rem 2rem;
+    &__divider {
+      border-top: 1px solid $mercury;
+      padding-bottom: 2.5rem;
+    }
+    &__thumbnail {
+      width: 60%;
+    }
+    &__formfields-container {
+      width: 100%;
+    }
+    &__btn-container {
+      border-top: 1px solid $mercury;
+      padding-top: 2rem;
+      @include flexbox(
+        $flex-direction: row-reverse,
+        $justify-content: flex-start,
+        $gap: 3rem
+      );
+    }
+  }
+  @include desktop {
+    margin: 1rem 4rem;
+    &__thumbnail-container {
+      width: 40%;
+    }
+    &__thumbnail {
+      width: 100%;
+    }
+    &__formfields-container {
+      width: 60%;
+      @include flexbox($flex-direction: column, $gap: 2.5rem);
+    }
+  }
+}
+
+.responsive__container {
+  @include flexbox(
+    $flex-direction: column,
+    $justify-content: space-evenly,
+    $gap: 2rem
+  );
+  @include desktop {
+    @include flexbox(
+      $flex-direction: row,
+      $justify-content: space-evenly,
+      $gap: 2rem
+    );
+  }
+}

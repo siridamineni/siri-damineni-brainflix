@@ -4,7 +4,7 @@
 .button {
   background-color: $blue;
   border: none;
-  @include flexbox($justify-content: flex-start, $gap: 4rem);
+  @include flexbox($justify-content: flex-start, $gap: 5rem);
   @include text-style(
     $color: $white,
     $font-size: 0.75rem,

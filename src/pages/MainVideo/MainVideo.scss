@@ -1,0 +1,90 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+* {
+  overflow-x: hidden;
+}
+.video-information {
+  padding: 24px 1rem;
+  @include tablet {
+    padding: 24px 2rem 2rem 2rem;
+  }
+  @include desktop {
+    padding: 24px 0rem 2rem 2rem;
+  }
+}
+.comments-list {
+  margin: 1rem 1rem 0rem 1rem;
+  &__label {
+    margin: 1rem;
+    @include text-style(
+      $font-size: 0.875rem,
+      $line-height: 1.375rem,
+      $font-weight: 600
+    );
+  }
+  &__item {
+    border-top: 1px solid $mercury;
+    &:last-child {
+      border-bottom: 1px solid $mercury;
+    }
+  }
+  @include tablet {
+    &__label {
+      margin: 1rem 2rem;
+    }
+    // margin: 0rem 2rem;
+  }
+  @include desktop {
+    margin: 0rem 0rem 0rem 2rem;
+    &__item {
+      border-top: 1px solid $mercury;
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+}
+.video-list {
+  @include flexbox(
+    $flex-direction: column,
+    $align-items: flex-start,
+    $justify-content: flex-start
+  );
+  margin: 0 1rem 2rem 1rem;
+  &__heading {
+    @include text-style(
+      $color: $silver,
+      $font-weight: 600,
+      $text-transform: uppercase
+    );
+  }
+  @include tablet {
+    margin: 1rem 2rem 2rem 2rem;
+  }
+  @include desktop {
+    padding: 1rem 0rem 2rem 2rem;
+  }
+}
+.desktop-responsive__container {
+  @include desktop {
+    padding: 0rem 4rem;
+    @include flexbox(
+      $justify-content: flex-start,
+      $align-items: flex-start,
+      $gap: 0rem
+    );
+    width: 100%;
+  }
+}
+
+.desktop-responsive__current-video-details {
+  @include desktop {
+    width: 70%;
+  }
+}
+.desktop-responsive__next-videos {
+  @include desktop {
+    width: 30%;
+    border-left: 1px solid $mercury;
+  }
+}

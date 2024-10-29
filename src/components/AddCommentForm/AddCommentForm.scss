@@ -14,28 +14,8 @@
     @include flexbox($flex-direction: column, $align-items: flex-start);
     width: 80%;
   }
-  &__container {
-    @include flexbox(
-      $flex-direction: column,
-      $gap: 0.5rem,
-      $align-items: flex-start
-    );
-  }
-  &__label {
-    @include text-style($color: $silver, $font-weight: 600);
-  }
-  &__input {
-    @include input;
-    height: 6.25rem;
+  &__btn-container {
     width: 100%;
-    resize: none;
-  }
-  &__input::placeholder {
-    @include text-style();
-  }
-  &__input:focus {
-    border: 1px solid $blue;
-    outline: none;
   }
   @include tablet {
     margin: 1rem 2rem;
@@ -47,17 +27,6 @@
     &__formfields {
       @include flexbox($flex-direction: row, $justify-content: space-evenly);
       width: 90%;
-    }
-    &__container {
-      @include flexbox(
-        $flex-direction: column,
-        $gap: 0.5rem,
-        $align-items: flex-start
-      );
-      flex: 1 1 auto;
-    }
-    &__input {
-      height: 2.5rem;
     }
     &__btn-container {
       margin-top: 30px;

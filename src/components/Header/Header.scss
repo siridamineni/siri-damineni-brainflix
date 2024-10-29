@@ -3,9 +3,17 @@
 
 .header {
   @include flexbox($flex-direction: column);
-  padding: 0.5rem 1rem 1rem 1rem;
+  padding: 1rem;
+  border-bottom: 1px solid $mercury;
   &__search-container {
     @include flexbox($justify-content: space-between);
+    width: 100%;
+  }
+  &--home-link {
+    align-self: center;
+  }
+  &--upload-link {
+    text-decoration: none;
     width: 100%;
   }
   @include tablet {
@@ -14,6 +22,9 @@
     &__container {
       @include flexbox($flex-direction: row, $justify-content: space-between);
       width: 70%;
+    }
+    &--upload-link {
+      width: auto;
     }
   }
   @include desktop {

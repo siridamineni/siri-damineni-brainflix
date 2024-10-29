@@ -1,6 +1,6 @@
 import React from "react";
 
-function publish({ width = "24px", height = "24px", fill = "#FFFFFF" }) {
+function PublishIcon({ width = "20", height = "20", fill = "#FFFFFF" }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14,4 +14,4 @@ function publish({ width = "24px", height = "24px", fill = "#FFFFFF" }) {
   );
 }
 
-export default publish;
+export default PublishIcon;

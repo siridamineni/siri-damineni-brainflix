@@ -1,0 +1,41 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+.formfield {
+  width: 100%;
+  @include flexbox(
+    $flex-direction: column,
+    $gap: 0.5rem,
+    $align-items: flex-start
+  );
+  &__label {
+    @include text-style(
+      $color: $silver,
+      $font-weight: 600,
+      $text-transform: uppercase
+    );
+  }
+  &__input {
+    @include input;
+    width: 100%;
+    resize: none;
+    padding-top: 0.5rem;
+    min-height: 3rem;
+  }
+  &__input::placeholder {
+    @include text-style($line-height: 1.2, $text-align: left);
+  }
+  &__input:focus {
+    border: 1px solid $blue;
+    outline: none;
+  }
+  @include tablet {
+    &__container {
+      @include flexbox(
+        $flex-direction: column,
+        $gap: 0.5rem,
+        $align-items: flex-start
+      );
+      flex: 1 1 auto;
+    }
+  }
+}
