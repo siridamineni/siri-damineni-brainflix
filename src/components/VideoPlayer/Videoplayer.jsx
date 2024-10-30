@@ -1,11 +1,11 @@
 import "./VideoPlayer.scss";
 
-function VideoPlayer({ src, poster }) {
+function VideoPlayer({ poster }) {
   return (
     <div className="video-player">
       <video
         className="video-player__video-input"
-        src={src}
+        src=""
         poster={poster}
         width="100%"
         controls

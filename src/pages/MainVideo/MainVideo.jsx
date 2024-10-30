@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./MainVideo.scss";
 import "../../styles/partials/_global.scss";
 import { format } from "date-fns";
+import { useParams, useNavigate } from "react-router-dom";
+import axios from "axios";
 import Videoplayer from "../../components/VideoPlayer/Videoplayer.jsx";
 import VideoDetails from "../../components/VideoDetails/VideoDetails.jsx";
 import Title from "../../components/Title/Title.jsx";
@@ -9,12 +11,44 @@ import VideoDescription from "../../components/VideoDescription/VideoDescription
 import AddCommentForm from "../../components/AddCommentForm/AddCommentForm.jsx";
 import CommentsListItem from "../../components/CommentsListItem/CommentsListItem.jsx";
 import VideoListItem from "../../components/VideoListItem/VideoListItem.jsx";
-import VideosData from "../../data/VideosData.js";
 function MainVideo() {
-  const [mainVideo, setMainVideo] = useState(VideosData[0]);
-  const onVideoChange = (id) => {
-    setMainVideo(VideosData.find((item) => item.id === id));
+  const params = useParams();
+  const navigate = useNavigate();
+  const [videosList, setVideosList] = useState();
+  const [mainVideo, setMainVideo] = useState();
+  const handleNextVideo = (id) => {
+    navigate(`/videos/${id}`);
   };
+  useEffect(() => {
+    axios
+      .get(
+        `https://unit-3-project-api-0a5620414506.herokuapp.com/videos?api_key=${
+          import.meta.env.VITE_API_KEY
+        }`
+      )
+      .then((res) => setVideosList(res.data))
+      .catch((err) => console.log(err));
+  }, []);
+
+  const getVideoDetailsById = async (id) => {
+    axios
+      .get(
+        `https://unit-3-project-api-0a5620414506.herokuapp.com/videos/${id}?api_key=${
+          import.meta.env.VITE_API_KEY
+        }`
+      )
+      .then((res) => {
+        setMainVideo(res.data);
+      })
+      .catch((error) => console.error(error));
+  };
+  useEffect(() => {
+    if (params?.videoId) {
+      getVideoDetailsById(params.videoId);
+    } else if (videosList?.length > 0) {
+      getVideoDetailsById(videosList[0].id);
+    }
+  }, [videosList, params]);
   return (
     <>
       <Videoplayer src={mainVideo?.video} poster={mainVideo?.image} />
@@ -24,7 +58,11 @@ function MainVideo() {
             <Title heading={mainVideo?.title} />
             <VideoDetails
               name={`By ${mainVideo?.channel}`}
-              date={format(new Date(mainVideo?.timestamp), "M/d/yyyy")}
+              date={
+                mainVideo?.timestamp
+                  ? format(new Date(mainVideo.timestamp), "M/d/yyyy")
+                  : ""
+              }
               views={mainVideo?.views}
               likes={mainVideo?.likes}
             />
@@ -40,7 +78,11 @@ function MainVideo() {
                 <div className="comments-list__item" key={item?.id}>
                   <CommentsListItem
                     name={item?.name}
-                    time={format(new Date(item?.timestamp), "MM/dd/yyyy")}
+                    time={
+                      item?.timestamp
+                        ? format(new Date(item.timestamp), "MM/dd/yyyy")
+                        : ""
+                    }
                     description={item?.comment}
                   />
                 </div>
@@ -51,21 +93,21 @@ function MainVideo() {
         <div className="desktop-responsive__next-videos">
           <div className="video-list">
             <h3 className="video-list__heading">NEXT VIDEOS</h3>
-            {VideosData?.filter((item) => item.id != mainVideo?.id)?.map(
-              (eachVideo) => {
+            {videosList
+              ?.filter((item) => item.id != mainVideo?.id)
+              ?.map((eachVideo) => {
                 return (
-                  <div key={eachVideo.id}>
+                  <div
+                    key={eachVideo.id}
+                    onClick={() => handleNextVideo(eachVideo.id)}>
                     <VideoListItem
-                      id={eachVideo?.id}
                       src={eachVideo?.image}
                       videoName={eachVideo?.title}
                       videoBy={eachVideo?.channel}
-                      handleVideoChange={onVideoChange}
                     />
                   </div>
                 );
-              }
-            )}
+              })}
           </div>
         </div>
       </div>

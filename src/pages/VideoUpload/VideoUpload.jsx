@@ -18,7 +18,7 @@ function VideoUpload() {
   const handleSubmit = (e) => {
     e.preventDefault();
     alert(`Title is ${title} and Description is ${description}`);
-    //reset the form
+    // reset the form
     setTitle("");
     setDescription("");
   };
@@ -62,7 +62,9 @@ function VideoUpload() {
         </div>
         <div className="video-upload__btn-container">
           <IconButton icon={<PublishIcon />} text="publish" type="submit" />
-          <button className="video-upload__cancel-button">cancel</button>
+          <button disabled className="video-upload__cancel-button">
+            cancel
+          </button>
         </div>
       </form>
     </div>

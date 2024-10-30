@@ -23,6 +23,7 @@ function FormField({
           onChange={handleChange}
           cols={cols}
           rows={rows}
+          required
         />
       ) : (
         <input
@@ -32,6 +33,7 @@ function FormField({
           placeholder={placeholder}
           value={inputValue}
           onChange={handleChange}
+          required
         />
       )}
     </div>

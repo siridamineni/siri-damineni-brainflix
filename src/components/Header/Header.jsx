@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import BrainflixLogo from "../brainflixLogo/brainflixLogo";
 import Search from "../Search/Search";
 import userImage from "../../assets/images/Mohan-muruge.jpg";
@@ -8,7 +8,11 @@ import IconButton from "../IconButton/IconButton";
 import UploadIcon from "../../assets/icons/UploadIcon";
 import "./Header.scss";
 const Header = () => {
+  const navigate = useNavigate();
   const [isLargerScreen, setIsLargerScreen] = useState(window.innerWidth > 767);
+  const handleUploadPageNavigation = () => {
+    navigate(`/upload`);
+  };
   useEffect(() => {
     const handleResize = () => {
       setIsLargerScreen(window.innerWidth > 767);
@@ -25,12 +29,13 @@ const Header = () => {
           </Link>
           <div className="header__container">
             <Search />
-            <Link className="header--upload-link" to="/upload">
-              <IconButton
-                icon={<UploadIcon height={20} width={20} />}
-                text={"upload"}
-              />
-            </Link>
+            {/* <Link className="header--upload-link" to="/upload"> */}
+            <IconButton
+              icon={<UploadIcon height={20} width={20} />}
+              text={"upload"}
+              handleClick={handleUploadPageNavigation}
+            />
+            {/* </Link> */}
             <UserAvatar userImg={userImage} />
           </div>
         </div>
@@ -43,12 +48,13 @@ const Header = () => {
             <Search />
             <UserAvatar userImg={userImage} />
           </div>
-          <Link className="header--upload-link" to="/upload">
-            <IconButton
-              icon={<UploadIcon height={20} width={20} />}
-              text={"upload"}
-            />
-          </Link>
+          {/* <Link className="header--upload-link" to="/upload"> */}
+          <IconButton
+            icon={<UploadIcon height={20} width={20} />}
+            text={"upload"}
+            handleClick={handleUploadPageNavigation}
+          />
+          {/* </Link> */}
         </div>
       )}
     </>
