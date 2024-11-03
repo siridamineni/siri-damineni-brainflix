@@ -1,10 +1,11 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 .video-list-item {
-  @include flexbox($align-items: stretch);
+  @include flexbox($align-items: center);
+
   &__thumnail-card {
     background-color: $mercury;
-    border-radius: 4px;
+    border-radius: 6px;
     object-fit: cover;
     width: 50%;
     cursor: pointer;

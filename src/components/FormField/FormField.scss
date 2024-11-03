@@ -18,9 +18,15 @@
     @include input;
     width: 100%;
     resize: none;
-    padding-top: 0.5rem;
-    min-height: 3rem;
+    min-height: 2.5rem;
   }
+  &__input--textarea {
+    min-height: 6rem;
+    @include tablet {
+      min-height: 2.5rem;
+    }
+  }
+
   &__input::placeholder {
     @include text-style($line-height: 1.2, $text-align: left);
   }

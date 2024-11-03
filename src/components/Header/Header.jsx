@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import BrainflixLogo from "../brainflixLogo/brainflixLogo";
 import Search from "../Search/Search";
 import userImage from "../../assets/images/Mohan-muruge.jpg";
+import BrainFlixLogoImage from "../../assets/images/BrainflixLogoImage";
 import UserAvatar from "../UserAvatar/UserAvatar";
 import IconButton from "../IconButton/IconButton";
-import UploadIcon from "../../assets/icons/UploadIcon";
+import UploadIcon from "../../assets/icons/upload-icon.svg";
 import "./Header.scss";
 const Header = () => {
   const navigate = useNavigate();
@@ -21,43 +21,34 @@ const Header = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
   return (
-    <>
+    <div className="header">
+      <Link className="header--home-link" to="/">
+        <BrainFlixLogoImage height="30" />
+      </Link>
       {isLargerScreen ? (
-        <div className="header">
-          <Link className="header--home-link" to="/">
-            <BrainflixLogo />
-          </Link>
-          <div className="header__container">
-            <Search />
-            {/* <Link className="header--upload-link" to="/upload"> */}
-            <IconButton
-              icon={<UploadIcon height={20} width={20} />}
-              text={"upload"}
-              handleClick={handleUploadPageNavigation}
-            />
-            {/* </Link> */}
-            <UserAvatar userImg={userImage} />
-          </div>
+        <div className="header__container">
+          <Search />
+          <IconButton
+            icon={UploadIcon}
+            text={"upload"}
+            handleClick={handleUploadPageNavigation}
+          />
+          <UserAvatar userImg={userImage} />
         </div>
       ) : (
-        <div className="header">
-          <Link className="header--home-link" to="/">
-            <BrainflixLogo />
-          </Link>
+        <>
           <div className="header__search-container">
             <Search />
             <UserAvatar userImg={userImage} />
           </div>
-          {/* <Link className="header--upload-link" to="/upload"> */}
           <IconButton
-            icon={<UploadIcon height={20} width={20} />}
+            icon={UploadIcon}
             text={"upload"}
             handleClick={handleUploadPageNavigation}
           />
-          {/* </Link> */}
-        </div>
+        </>
       )}
-    </>
+    </div>
   );
 };
 

@@ -7,6 +7,21 @@
   }
   &__formfields-container {
     @include flexbox($flex-direction: column, $gap: 2rem);
+    width: 100%;
+  }
+  &__title {
+    @include text-style(
+      $font-size: 1.5rem,
+      $line-height: 2rem,
+      $font-weight: 700
+    );
+    @include tablet {
+      @include text-style(
+        $font-size: 3rem,
+        $line-height: 4rem,
+        $font-weight: 700
+      );
+    }
   }
   &__thumbnail-title {
     @include text-style(
@@ -39,7 +54,7 @@
       padding-bottom: 2.5rem;
     }
     &__thumbnail {
-      width: 60%;
+      width: 50%;
     }
     &__formfields-container {
       width: 100%;
@@ -55,7 +70,7 @@
     }
   }
   @include desktop {
-    margin: 1rem 4rem;
+    margin: 1rem 4.5rem;
     &__thumbnail-container {
       width: 40%;
     }
@@ -64,7 +79,7 @@
     }
     &__formfields-container {
       width: 60%;
-      @include flexbox($flex-direction: column, $gap: 2.5rem);
+      @include flexbox($flex-direction: column, $gap: 2.8rem);
     }
   }
 }
@@ -73,12 +88,13 @@
   @include flexbox(
     $flex-direction: column,
     $justify-content: space-evenly,
-    $gap: 2rem
+    $gap: 1rem
   );
   @include desktop {
     @include flexbox(
       $flex-direction: row,
       $justify-content: space-evenly,
+      $align-items: flex-start,
       $gap: 2rem
     );
   }

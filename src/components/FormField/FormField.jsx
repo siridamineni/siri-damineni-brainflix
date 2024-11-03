@@ -15,7 +15,7 @@ function FormField({
       <label className="formfield__label">{label}</label>
       {isTextArea ? (
         <textarea
-          className="formfield__input"
+          className="formfield__input formfield__input--textarea"
           id={id}
           name={name}
           placeholder={placeholder}

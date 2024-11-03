@@ -1,30 +1,32 @@
 import { useState } from "react";
 import "./VideoUpload.scss";
-import Title from "../../components/Title/Title";
 import FormField from "../../components/FormField/FormField";
 import IconButton from "../../components/IconButton/IconButton";
-import PublishIcon from "../../assets/icons/PublishIcon";
+import PublishIcon from "../../assets/icons/publish-icon.svg";
 import ThumbnailImage from "../../assets/images/Upload-video-preview.jpg";
 function VideoUpload() {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
+  const [newVideoData, setNewVideoData] = useState({
+    title: "",
+    description: "",
+  });
 
-  const handleTitleChange = (e) => {
-    setTitle(e.target.value.toString());
-  };
-  const handleDescriptionChange = (e) => {
-    setDescription(e.target.value.toString());
-  };
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(`Title is ${title} and Description is ${description}`);
+    // set the data to state
+    setNewVideoData({
+      title: e?.target?.title.toString(),
+      description: e?.target?.description?.toString(),
+    });
+    // Displaying the collected form data in an alert
+    alert(
+      `Title is "${e?.target?.title.value.toString()}"\n Description is "${e?.target?.description?.value.toString()}"\n`
+    );
     // reset the form
-    setTitle("");
-    setDescription("");
+    e.target.reset();
   };
   return (
     <div className="video-upload">
-      <Title heading={"Upload Video"} />
+      <h1 className="video-upload__title">Upload Video</h1>
       <div className="video-upload__divider" />
       <form className="video-upload__form" onSubmit={handleSubmit}>
         <div className="responsive__container">
@@ -43,8 +45,6 @@ function VideoUpload() {
               id="title"
               name="title"
               placeholder="Add a title to your video"
-              inputValue={title}
-              handleChange={handleTitleChange}
             />
 
             <FormField
@@ -53,15 +53,13 @@ function VideoUpload() {
               id="description"
               name="description"
               placeholder="Add a description to your video"
-              inputValue={description}
-              handleChange={handleDescriptionChange}
-              rows={5}
+              rows={6}
               cols={40}
             />
           </div>
         </div>
         <div className="video-upload__btn-container">
-          <IconButton icon={<PublishIcon />} text="publish" type="submit" />
+          <IconButton icon={PublishIcon} text="publish" type="submit" />
           <button disabled className="video-upload__cancel-button">
             cancel
           </button>

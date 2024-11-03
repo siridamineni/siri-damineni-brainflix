@@ -1,10 +1,11 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 
-.button {
+.btn {
   background-color: $blue;
   border: none;
-  @include flexbox($justify-content: flex-start, $gap: 5rem);
+  position: relative;
+  @include flexbox($justify-content: center, $align-items: center);
   @include text-style(
     $color: $white,
     $font-size: 0.75rem,
@@ -15,13 +16,12 @@
   padding: 10px;
   border-radius: 4px;
   width: 100%;
+  &__icon {
+    position: absolute;
+    left: 10px;
+  }
   @include tablet {
     width: 9.375rem;
-    @include flexbox(
-      $justify-content: flex-start,
-      $gap: 1rem,
-      $align-items: flex-start
-    );
     cursor: pointer;
     &:hover {
       background-color: $dark-blue;

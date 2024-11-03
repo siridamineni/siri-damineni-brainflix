@@ -3,15 +3,182 @@
 * {
   overflow-x: hidden;
 }
-.video-information {
+.video-player {
+  background-color: $dark-black;
+  overflow: hidden;
+  aspect-ratio: 16/9;
+  &__video-input {
+    width: 100%;
+    object-fit: cover;
+  }
+  @include tablet {
+    padding: 0rem 2rem;
+  }
+  @include desktop {
+    padding: 0rem 10rem;
+  }
+}
+.video-info {
   padding: 24px 1rem;
+  &__title {
+    @include text-style(
+      $font-size: 1.5rem,
+      $line-height: 2rem,
+      $font-weight: 700
+    );
+    @include tablet {
+      @include text-style(
+        $font-size: 3rem,
+        $line-height: 4rem,
+        $font-weight: 700
+      );
+    }
+  }
+  &__details {
+    @include flexbox(
+      $flex-direction: row,
+      $justify-content: flex-start,
+      $align-items: center
+    );
+    border-top: 1px solid $mercury;
+    border-bottom: 1px solid $mercury;
+
+    @include tablet {
+      border-top: none;
+      margin-top: -10px;
+      @include flexbox(
+        $flex-direction: row,
+        $justify-content: space-between,
+        $align-items: center
+      );
+    }
+    @include desktop {
+      padding-right: 2rem;
+    }
+  }
+  &__name-date {
+    padding: 1rem 0rem;
+    @include flexbox(
+      $flex-direction: column,
+      $align-items: flex-start,
+      $gap: 1rem
+    );
+    @include tablet {
+      @include flexbox(
+        $flex-direction: row,
+        $align-items: flex-start,
+        $gap: 1rem
+      );
+    }
+  }
+  &__name {
+    @include text-style($font-weight: 600);
+    @include tablet {
+      @include text-style(
+        $font-size: 1rem,
+        $line-height: 1.25rem,
+        $font-weight: 600
+      );
+    }
+  }
+  &__date {
+    @include text-style($color: $silver);
+    @include tablet {
+      & > span {
+        @include text-style(
+          $font-size: 1rem,
+          $line-height: 1.25rem,
+          $color: $silver
+        );
+      }
+    }
+  }
+  &__views-likes {
+    @include flexbox(
+      $flex-direction: column,
+      $align-items: flex-start,
+      $gap: 1rem
+    );
+    @include text-style($color: $silver);
+    @include tablet {
+      @include flexbox(
+        $flex-direction: row,
+        $align-items: flex-start,
+        $gap: 1rem
+      );
+    }
+  }
+  &__views {
+    @include flexbox($gap: 0.5rem);
+  }
+  &__likes {
+    @include flexbox($gap: 0.5rem);
+  }
   @include tablet {
     padding: 24px 2rem 2rem 2rem;
   }
   @include desktop {
     padding: 24px 0rem 2rem 2rem;
   }
+  &__description {
+    padding-top: 1rem;
+    @include text-style();
+    @include tablet {
+      @include text-style($font-size: 0.875rem, $line-height: 1.25rem);
+    }
+    @include desktop {
+      padding-right: 2rem;
+    }
+  }
 }
+
+.comment-form {
+  margin: 0 1rem;
+  @include flexbox(
+    $flex-direction: row,
+    $align-items: flex-start,
+    $justify-content: flex-start
+  );
+  &__img-container {
+    padding-top: 1.6rem;
+  }
+  &__formfields {
+    @include flexbox($flex-direction: column, $align-items: flex-start);
+    width: 80%;
+  }
+  &__formfield {
+    width: 100%;
+  }
+  &__btn-container {
+    width: 100%;
+  }
+  @include tablet {
+    margin: 1rem 1rem 1rem 2rem;
+    @include flexbox(
+      $flex-direction: row,
+      $justify-content: flex-start,
+      $align-items: flex-start
+    );
+    &__formfields {
+      @include flexbox($flex-direction: row, $justify-content: space-evenly);
+      width: 90%;
+    }
+    &__formfield {
+      width: 100%;
+    }
+    &__btn-container {
+      margin-top: 26px;
+      width: 31%;
+    }
+  }
+  @include desktop {
+    margin: 1rem 0rem 1rem 2rem;
+    &__btn-container {
+      width: 30%;
+    }
+  }
+}
+
 .comments-list {
   margin: 1rem 1rem 0rem 1rem;
   &__label {
@@ -29,10 +196,10 @@
     }
   }
   @include tablet {
+    margin: 0rem 2rem;
     &__label {
       margin: 1rem 2rem;
     }
-    // margin: 0rem 2rem;
   }
   @include desktop {
     margin: 0rem 0rem 0rem 2rem;
@@ -62,7 +229,7 @@
     margin: 1rem 2rem 2rem 2rem;
   }
   @include desktop {
-    padding: 1rem 0rem 2rem 2rem;
+    margin-top: 1rem;
   }
 }
 .desktop-responsive__container {
