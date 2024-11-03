@@ -16,9 +16,14 @@ function MainVideo() {
   const navigate = useNavigate();
   const [videosList, setVideosList] = useState();
   const [mainVideo, setMainVideo] = useState();
+  const handleScroll = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
   const handleNextVideo = (id) => {
     navigate(`/videos/${id}`);
+    handleScroll();
   };
+
   useEffect(() => {
     axios
       .get(
@@ -26,7 +31,9 @@ function MainVideo() {
           import.meta.env.VITE_API_KEY
         }`
       )
-      .then((res) => setVideosList(res.data))
+      .then((res) => {
+        setVideosList(res.data);
+      })
       .catch((err) => console.log(err));
   }, []);
 
