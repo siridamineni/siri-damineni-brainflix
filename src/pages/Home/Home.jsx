@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "./MainVideo.scss";
+import "./Home.scss";
 import "../../styles/partials/_global.scss";
 import { format } from "date-fns";
 import { useParams, useNavigate } from "react-router-dom";
@@ -13,7 +13,8 @@ import IconButton from "../../components/IconButton/IconButton.jsx";
 import userImage from "../../assets/images/Mohan-muruge.jpg";
 import CommentsListItem from "../../components/CommentsListItem/CommentsListItem.jsx";
 import VideoListItem from "../../components/VideoListItem/VideoListItem.jsx";
-function MainVideo() {
+
+function Home() {
   const params = useParams();
   const navigate = useNavigate();
   const [videosList, setVideosList] = useState();
@@ -29,7 +30,9 @@ function MainVideo() {
   const handleSubmit = (e) => {
     e.preventDefault();
     //add post api to submit the form
-
+    // axios.post(`https://unit-3-project-api-0a5620414506.herokuapp.com/videos/${id}/comments?api_key=${
+    //   import.meta.env.VITE_API_KEY
+    // }`, {name: 'Connie Tucker', comment: e.target.comment.value});
     //reset the form
     setAddComment("");
   };
@@ -189,4 +192,4 @@ function MainVideo() {
   );
 }
 
-export default MainVideo;
+export default Home;
