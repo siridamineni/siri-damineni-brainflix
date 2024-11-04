@@ -4,8 +4,8 @@ import "../../styles/partials/_global.scss";
 import { format } from "date-fns";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import LikesIcon from "../../assets/icons/LikesIcon";
-import ViewsIcon from "../../assets/icons/ViewsIcon";
+import LikesIcon from "../../assets/icons/likes.svg";
+import ViewsIcon from "../../assets/icons/views.svg";
 import AddCommentIcon from "../../assets/icons/add-comment-icon.svg";
 import UserAvatar from "../../components/UserAvatar/UserAvatar.jsx";
 import FormField from "../../components/FormField/FormField.jsx";
@@ -83,7 +83,7 @@ function MainVideo() {
       <div className="video-player">
         <video
           className="video-player__video-input"
-          src={mainVideo?.video}
+          src=""
           poster={mainVideo?.image}
           width="100%"
           height="100%"
@@ -105,11 +105,11 @@ function MainVideo() {
               </div>
               <div className="video-info__views-likes">
                 <div className="video-info__views">
-                  <ViewsIcon />
+                  <img src={ViewsIcon} alt="views" />
                   <span>{mainVideo?.views}</span>
                 </div>
                 <div className="video-info__likes">
-                  <LikesIcon />
+                  <img src={LikesIcon} alt="likes" />
                   <span>{mainVideo?.likes}</span>
                 </div>
               </div>
