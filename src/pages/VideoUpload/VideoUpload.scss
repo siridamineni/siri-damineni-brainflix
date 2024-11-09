@@ -32,11 +32,21 @@
     );
     padding-bottom: 0.3rem;
   }
+  &__thumbnail-btn {
+    border: none;
+    background-color: $white;
+    padding: 0;
+    @include flexbox($justify-content: flex-start);
+  }
   &__thumbnail {
     background-color: $mercury;
     border-radius: 4px;
     object-fit: cover;
     width: 100%;
+    cursor: pointer;
+  }
+  &__thumbnail-input {
+    display: none;
   }
   &__btn-container {
     @include flexbox($flex-direction: column);

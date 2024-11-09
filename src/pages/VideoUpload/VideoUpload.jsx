@@ -1,29 +1,57 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import "./VideoUpload.scss";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import FormField from "../../components/FormField/FormField";
 import IconButton from "../../components/IconButton/IconButton";
 import PublishIcon from "../../assets/icons/publish-icon.svg";
 import ThumbnailImage from "../../assets/images/Upload-video-preview.jpg";
 function VideoUpload() {
-  const [newVideoData, setNewVideoData] = useState({
-    title: "",
-    description: "",
-  });
+  const navigate = useNavigate();
+  const [thumbnail, setThumbnail] = useState(ThumbnailImage);
+  const [thumbnailFile, setThumnailFile] = useState();
 
-  const handleSubmit = (e) => {
+  //created ref for file input element to activate event handler on clicking on the image
+  const imgFileUploadRef = useRef();
+
+  //attaching click event handler to the input element
+  const handleImageChange = (e) => {
     e.preventDefault();
-    // set the data to state
-    setNewVideoData({
-      title: e?.target?.title.toString(),
-      description: e?.target?.description?.toString(),
-    });
-    // Displaying the collected form data in an alert
-    alert(
-      `Title is "${e?.target?.title.value.toString()}"\n Description is "${e?.target?.description?.value.toString()}"\n`
-    );
-    // reset the form
-    e.target.reset();
+    imgFileUploadRef.current.click();
   };
+
+  //Convert uploaded image from ref to object URL blob for display and setting it to state Variable as a file for server upload.
+  const handleImageDisplay = () => {
+    const imageFile = imgFileUploadRef.current.files[0];
+    if (imageFile) {
+      const cachedUrl = URL.createObjectURL(imageFile);
+      setThumbnail(cachedUrl);
+      setThumnailFile(imageFile);
+    }
+  };
+
+  const handleNavigateToHome = () => {
+    navigate("/");
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("title", `${e?.target?.title?.value}`);
+    formData.append("description", `${e?.target?.description?.value}`);
+    thumbnailFile && formData.append("image", thumbnailFile);
+    const response = await axios.post(
+      `${import.meta.env.VITE_API_URL}/videos`,
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
+    handleNavigateToHome();
+  };
+
   return (
     <div className="video-upload">
       <h1 className="video-upload__title">Upload Video</h1>
@@ -32,10 +60,24 @@ function VideoUpload() {
         <div className="responsive__container">
           <div className="video-upload__thumbnail-container">
             <p className="video-upload__thumbnail-title">VIDEO THUMBNAIL</p>
-            <img
-              className="video-upload__thumbnail"
-              src={ThumbnailImage}
-              alt={"uploaded video thumbnail"}
+            <button
+              onClick={(e) => {
+                handleImageChange(e);
+              }}
+              className="video-upload__thumbnail-btn">
+              <img
+                className="video-upload__thumbnail"
+                src={thumbnail}
+                alt="uploaded video thumbnail"
+              />
+            </button>
+            <input
+              ref={imgFileUploadRef}
+              className="video-upload__thumbnail-input"
+              type="file"
+              name="thumbnailUpload"
+              accept="image/*"
+              onChange={handleImageDisplay}
             />
           </div>
           <div className="video-upload__formfields-container">

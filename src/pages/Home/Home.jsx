@@ -17,7 +17,7 @@ import VideoListItem from "../../components/VideoListItem/VideoListItem.jsx";
 function Home() {
   const params = useParams();
   const navigate = useNavigate();
-  const [videosList, setVideosList] = useState();
+  const [videosList, setVideosList] = useState([]);
   const [mainVideo, setMainVideo] = useState();
   const [addComment, setAddComment] = useState("");
   const [isLargerScreen, setIsLargerScreen] = useState(window.innerWidth > 767);
@@ -29,10 +29,6 @@ function Home() {
   //handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    //add post api to submit the form
-    // axios.post(`https://unit-3-project-api-0a5620414506.herokuapp.com/videos/${id}/comments?api_key=${
-    //   import.meta.env.VITE_API_KEY
-    // }`, {name: 'Connie Tucker', comment: e.target.comment.value});
     //reset the form
     setAddComment("");
   };
@@ -46,11 +42,7 @@ function Home() {
 
   useEffect(() => {
     axios
-      .get(
-        `https://unit-3-project-api-0a5620414506.herokuapp.com/videos?api_key=${
-          import.meta.env.VITE_API_KEY
-        }`
-      )
+      .get(`${import.meta.env.VITE_API_URL}/videos`)
       .then((res) => {
         setVideosList(res.data);
       })
@@ -64,11 +56,7 @@ function Home() {
 
   const getVideoDetailsById = async (id) => {
     axios
-      .get(
-        `https://unit-3-project-api-0a5620414506.herokuapp.com/videos/${id}?api_key=${
-          import.meta.env.VITE_API_KEY
-        }`
-      )
+      .get(`${import.meta.env.VITE_API_URL}/videos/${id}`)
       .then((res) => {
         setMainVideo(res.data);
       })
@@ -77,7 +65,7 @@ function Home() {
   useEffect(() => {
     if (params?.videoId) {
       getVideoDetailsById(params.videoId);
-    } else if (videosList?.length > 0) {
+    } else if (videosList && videosList?.length > 0) {
       getVideoDetailsById(videosList[0].id);
     }
   }, [videosList, params]);
@@ -170,21 +158,22 @@ function Home() {
         <div className="desktop-responsive__next-videos">
           <div className="video-list">
             <h3 className="video-list__heading">NEXT VIDEOS</h3>
-            {videosList
-              ?.filter((item) => item.id != mainVideo?.id)
-              ?.map((eachVideo) => {
-                return (
-                  <div
-                    key={eachVideo.id}
-                    onClick={() => handleNextVideo(eachVideo.id)}>
-                    <VideoListItem
-                      src={eachVideo?.image}
-                      videoName={eachVideo?.title}
-                      videoBy={eachVideo?.channel}
-                    />
-                  </div>
-                );
-              })}
+            {videosList.length > 0 &&
+              videosList
+                ?.filter((item) => item.id != mainVideo?.id)
+                ?.map((eachVideo) => {
+                  return (
+                    <div
+                      key={eachVideo.id}
+                      onClick={() => handleNextVideo(eachVideo.id)}>
+                      <VideoListItem
+                        src={eachVideo?.image}
+                        videoName={eachVideo?.title}
+                        videoBy={eachVideo?.channel}
+                      />
+                    </div>
+                  );
+                })}
           </div>
         </div>
       </div>
