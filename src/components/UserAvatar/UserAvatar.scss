@@ -1,16 +1,15 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 .user-avatar {
-  border-radius: 50%;
-  background-color: $mercury;
-  object-fit: cover;
   width: 2.25rem;
   height: 2.25rem;
-  &--no-img {
-    border-radius: 50%;
-    background-color: $mercury;
-    width: 2.25rem;
-    height: 2.25rem;
+  overflow: hidden;
+  border-radius: 50%;
+  background-color: $mercury;
+  & > img {
+    width: 130%;
+    height: 100%;
+    object-fit: cover;
   }
   @include tablet {
     width: 2.5rem;
