@@ -4,6 +4,7 @@ import "../../styles/partials/_global.scss";
 import { format } from "date-fns";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import debounce from "debounce";
 import LikesIcon from "../../assets/icons/likes.svg";
 import ViewsIcon from "../../assets/icons/views.svg";
 import AddCommentIcon from "../../assets/icons/add-comment-icon.svg";
@@ -50,7 +51,7 @@ function Home() {
     const handleResize = () => {
       setIsLargerScreen(window.innerWidth > 767);
     };
-    window.addEventListener("resize", handleResize);
+    window.addEventListener("resize", debounce(handleResize, 300));
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
