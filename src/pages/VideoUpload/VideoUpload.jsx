@@ -5,7 +5,9 @@ import { useNavigate } from "react-router-dom";
 import FormField from "../../components/FormField/FormField";
 import IconButton from "../../components/IconButton/IconButton";
 import PublishIcon from "../../assets/icons/publish-icon.svg";
+import EditIcon from "../../assets/icons/edit-icon.svg";
 import ThumbnailImage from "../../assets/images/Upload-video-preview.jpg";
+
 function VideoUpload() {
   const navigate = useNavigate();
   const [thumbnail, setThumbnail] = useState(ThumbnailImage);
@@ -60,17 +62,20 @@ function VideoUpload() {
         <div className="responsive__container">
           <div className="video-upload__thumbnail-container">
             <p className="video-upload__thumbnail-title">VIDEO THUMBNAIL</p>
-            <button
-              onClick={(e) => {
-                handleImageChange(e);
-              }}
-              className="video-upload__thumbnail-btn">
+            <div className="video-upload__thumbnail-wrapper">
               <img
                 className="video-upload__thumbnail"
                 src={thumbnail}
                 alt="uploaded video thumbnail"
               />
-            </button>
+              <button
+                className="video-upload__editIcon"
+                onClick={(e) => {
+                  handleImageChange(e);
+                }}>
+                <img src={EditIcon} />
+              </button>
+            </div>
             <input
               ref={imgFileUploadRef}
               className="video-upload__thumbnail-input"

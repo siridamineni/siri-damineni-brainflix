@@ -241,18 +241,18 @@
       $align-items: flex-start,
       $gap: 0rem
     );
-    width: 100%;
+    min-width: 100%;
   }
 }
 
 .desktop-responsive__current-video-details {
   @include desktop {
-    max-width: 70%;
+    min-width: 70%;
   }
 }
 .desktop-responsive__next-videos {
   @include desktop {
-    width: 30%;
+    min-width: 30%;
     border-left: 1px solid $mercury;
   }
 }
